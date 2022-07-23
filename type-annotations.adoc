@@ -1,0 +1,46 @@
+= To Annotate, or Not to Annotate?
+
+by Justin Hewlett
+
+As a proud member of the ML family, F# has excellent type inference. This is generally a good thing. But as a newcomer to the language, it's often hard to know when you should use or omit type annotations. Some in the community suggest annotating everything, while others recommend to annotate as little as possible!
+
+I've experimented with a variety of approaches. While there can be implications on the quality of your code1, for me it was mostly a source of anxiety: "Am I doing it right?"
+
+== Strategies
+Here are some common strategies I've seen or used:
+
+=== Annotate the bare minimum
+The usual argument here is that annotations are noisy, and they make it harder to refactor your code (because in addition to updating your code, you need to update the annotations as they become out of date)2.
+
+Some also argue that annotations can make your code unnecessarily specific, preventing reuse. (This is because F# will infer your types to be as generic as possible.)
+
+All of this advice is reasonable if you're writing application code, where it's generally not a big deal if types change implicitly; you can just go update all the call sites and you're done.
+
+=== No wait, annotate everything!
+If you're writing a library, however, accidentally changing the signature of a function is a breaking change and is a much bigger deal.
+In that context, it can make a lot more sense to annotate everything to pin down your types.
+
+I could especially see this approach working well for a library that welcomes external contributors. "Annotate everything" is a simple rule to follow, and it also helps with viewing diffs in a context where you don't have your tooling to help show you the inferred types.
+
+=== Annotate...some of the things?
+A more nuanced position is to annotate all public, top-level functions, while allowing private functions to be inferred. This makes it easier to refactor your internals. It still manages to keep noise to a minimum, while keeping your public signatures locked in.
+
+This is a nice middle ground, and could be used for both application code and libraries. Indeed, this seems to be the recommendation in the F# style guide:
+
+Consider labeling argument names with explicit types in public APIs and do not rely on type inference for this.
+
+=== Prototype with inference, then lock it in
+In this approach, the general idea is that you start coding without any annotations. Then, as your code starts to take shape, you can check the type that was inferred (e.g. via your editor tooling). Assuming you agree, you can then add the annotation explicitly to pin it down.
+
+This is similar to the argument that dynamic types are better for prototyping, while static types are better for building the real thing. This is a cool variation though because inference means you don't have to give up type safety!
+
+=== Drive it out with types, then delete the annotations
+This one is almost the exact opposite of the previous one. With this strategy, you design all your types upfront: records, unions, and even function signatures. Then you implement the function. The types help you make sure the implementation is correct (likely in addition to testing). Finally, after you've implemented it, you may actually decide to remove the type annotations! Partly a matter of style, and partly a matter of the context you're working in.
+
+=== Use tests to lock in your types
+Since it's often a good idea to write tests for your public functions anyway, what if you used those tests to pin down your types? In this way, the tests become your first consumers, documenting their signature through usage.
+
+Admittedly, this strategy is a bit indirect. But I've observed this in my own code as one reason why I don't always feel the need to annotate my public functions.
+
+== The life of an annotation
+A common theme throughout all this is that it's easy to add and remove annotations at will. Some annotations are helpful mostly in development (e.g. to pinpoint an error when you get a confusing error message), while some annotations are more permanent. My advice: embrace this dynamic, and don't be afraid to change your mind. Striving for perfect consistency in where you add annotations, or when you add them, is futile. Ultimately, you'll need to experiment to find the right approach that fits your context and style!
