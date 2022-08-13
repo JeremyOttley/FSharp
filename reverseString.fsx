@@ -1,6 +1,6 @@
 open System
 
-let toString : char seq -> string = 
+let toString : seq<char> -> string = 
   Seq.map string >> String.concat ""
   
 let reverseString (s: string): string =
