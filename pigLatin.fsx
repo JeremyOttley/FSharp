@@ -1,7 +1,7 @@
 open System
 
 module PigLatin =
-    let toPigLatin (word: string) =
+    let toPigLatin (word: string): string =
         let isVowel (c: char) =
             match c with
             | 'a' | 'e' | 'i' |'o' |'u'
