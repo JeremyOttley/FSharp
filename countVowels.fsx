@@ -1,7 +1,7 @@
 open System
 
 module countVowels =
-    let count (word: string) =
+    let count (word: string): int =
         let isVowel (c: char) =
             match c with
             | 'a' | 'e' | 'i' |'o' |'u'
