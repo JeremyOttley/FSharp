@@ -1,9 +1,14 @@
 open System
 open FSharp.Data
 
-let [<Literal>] apiEndpoint: string = "" //zodiac link
+let [<Literal>] apiEndpoint: string = "https://www.astrology.com/horoscope/daily/"
 
-let getZodiac =
+let Zodiac = HtmlProvider<url>
+
+let doc = HtmlDocument.Load(url)
+doc.Descendants
+
+let getZodiac: obj  =
     query
     let sign = Console.ReadLine()
     match sign with
@@ -15,9 +20,11 @@ let getZodiac =
 let buildUrl (sign: string): string =
     apiEndpoint + sign + ".html"
     
-let signs: string[] = [| "aries"; "taurus"; "gemini"; "cancer";
-   "leo"; "virgo"; "libra"; "scorpio"; 
-   "sagittarius"; "capricorn"; "aquarius"; "pisces" |]
+let signs: string[] = 
+    [| "aries"; "taurus"; "gemini"; "cancer";
+    "leo"; "virgo"; "libra"; "scorpio"; 
+    "sagittarius"; "capricorn"; "aquarius"; "pisces" |]
 
-let signUrls: string[] = signs |> Array.map buildUrl
+let signUrls: string[] = 
+    signs |> Array.map buildUrl
 
