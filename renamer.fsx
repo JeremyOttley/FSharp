@@ -3,8 +3,7 @@ open System.IO
 let path = @"C:\Users\jottley\rename-test"
 
 let isImage (file: string) =
-    let extension = Path.GetExtension(file)
-    match extension with
+    match Path.GetExtension(file) with
     | ".jpg" | ".png" | ".bmp" | ".jpeg" -> true
     | _-> false
 
