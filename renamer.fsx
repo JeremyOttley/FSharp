@@ -4,9 +4,10 @@ let path = @"C:\Users\jottley\rename-test"
 
 let isImage (file: string) =
     let extension = Path.GetExtension(file)
-      match extension with
-          | ".jpg" | ".png" | ".bmp" | ".jpeg" -> true
-          | _-> false
+    match extension with
+    | ".jpg" | ".png" | ".bmp" | ".jpeg" -> true
+    | _-> false
+
 
 let images = 
     Directory.GetFiles(path, "*") 
