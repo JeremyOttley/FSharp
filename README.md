@@ -5,7 +5,7 @@ F# scripts
 
  dotnet publish -c Release -r win10-x64 -p:PublishTrimmed=true --self-contained
 
-## Osx target
+## Explicit (with osx target)
 
 dotnet publish \
   --framework net6.0 \
