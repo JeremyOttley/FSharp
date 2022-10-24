@@ -17,5 +17,4 @@ dotnet publish \
   -p:PublishReadyToRun=true \
   -p:EnableCompressionInSingleFile=true \
   -p:DebugType=embedded \
-  -p:ServerGarbageCollection=true \
   --output dist
