@@ -18,13 +18,13 @@ let textCase (s: string) =
     | Uppercase ->  (System.Globalization.CultureInfo.CurrentUICulture.TextInfo.ToTitleCase(s.ToLower()))
     | TitleCase ->  s
 
-let f () =
+let main () =
     printf "Enter Text: "
     let value: string = Console.ReadLine()
     ClipboardService.SetText(textCase value)
 
 
 while true do
-    f ()
+    main ()
 
 Console.ReadKey() |> ignore
