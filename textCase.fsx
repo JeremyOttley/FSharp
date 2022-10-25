@@ -14,14 +14,15 @@ let (|TitleCase|Uppercase|Lowercase|) (value: string) =
 
 let textCase (s: string) =
     match s with
-    | Lowercase -> printfn "%s" (System.Globalization.CultureInfo.CurrentUICulture.TextInfo.ToTitleCase s)
-    | Uppercase -> printfn "%s" (System.Globalization.CultureInfo.CurrentUICulture.TextInfo.ToTitleCase(s.ToLower()))
-    | TitleCase -> printfn "%s" s
+    | Lowercase -> (System.Globalization.CultureInfo.CurrentUICulture.TextInfo.ToTitleCase s)
+    | Uppercase ->  (System.Globalization.CultureInfo.CurrentUICulture.TextInfo.ToTitleCase(s.ToLower()))
+    | TitleCase ->  s
 
 let f () =
     printf "Enter Text: "
     let value: string = Console.ReadLine()
-    textCase value
+    ClipboardService.SetText(textCase value)
+
 
 while true do
     f ()
