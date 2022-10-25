@@ -13,7 +13,7 @@ let (|TitleCase|Uppercase|Lowercase|) (value: string) =
     elif isLowercase value then Lowercase
     else TitleCase
 
-let textCase (s: string) =
+let textCase (s: string) : string =
     match s with
     | Lowercase -> (System.Globalization.CultureInfo.CurrentUICulture.TextInfo.ToTitleCase s)
     | Uppercase ->  (System.Globalization.CultureInfo.CurrentUICulture.TextInfo.ToTitleCase(s.ToLower()))
