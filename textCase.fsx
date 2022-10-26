@@ -22,6 +22,7 @@ let textCase (s: string) : string =
 let main () =
     printf "Enter Text: "
     let value: string = Console.ReadLine()
+    textCase value
     ClipboardService.SetText(textCase value)
 
 
