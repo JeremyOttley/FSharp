@@ -6,7 +6,8 @@ let myLast (l: 'a list): int =
 let myButLast =
 
 // Find the K'th element of a list. The first element in the list is number 1.
-let elementAt =
+let elementAt (coll: 'a list) (n: int) =
+    coll[n]
 
 // Find the number of elements of a list.
 let myLength (l: 'a list): int =
