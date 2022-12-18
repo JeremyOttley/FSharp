@@ -1,14 +1,4 @@
-open System.Net.Http
-
-let getAsync (client: System.Net.HttpClient) (url:string) = 
-    async {
-        let! response = client.GetAsync(url) |> Async.AwaitTask
-        response.EnsureSuccessStatusCode () |> ignore
-        let! content = response.Content.ReadAsStringAsync() |> Async.AwaitTask
-        return content
-    }
-
-// or deprecated version:
+// deprecated but still works
 
 open System.IO
 
