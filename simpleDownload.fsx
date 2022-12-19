@@ -1,7 +1,7 @@
 module Web =
     open System.Net
 
-    let downloadFile (url:String) (dest:string) =
+    let downloadFile (url:string) (dest:string) =
         use wc = new WebClient()
         wc.DownloadFile(url, dest)
         
