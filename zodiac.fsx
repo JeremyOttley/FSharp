@@ -67,8 +67,12 @@ let isDate (date: string) =
     | _ -> false
 
 // let doc = HtmlDocument.Load((buildUrl Sign.Libra))
-// let title = doc.Descendants [ "h1" ]
-// let text = doc.Descendants [ "p" ]
+// let title = doc.Descendants [ "h1" ] |> Seq.toList
+// title.Head.InnerText() ;; sign name title
+// let text = doc.Descendants [ "p" ] |> Seq.toList
+// text[1].InnterText() ;; fortune text
+// let date = doc.Descendants ["h4"] |> Seq.toList
+// date[0].InnerText() ;; date of fortune
 
 //https://trustbit.tech/blog/2019/09/15/introduction-to-functional-programming-in-f-sharp-part-3
 
