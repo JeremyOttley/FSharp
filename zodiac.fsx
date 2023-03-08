@@ -62,7 +62,7 @@ let genHoroscrope (sign: Sign): Horoscope =
 
 //System.DateTime.TryParse("March 6, 2023")
 let isDate (date: string) =
-    Match System.DateTime.TryParse date with
+    match System.DateTime.TryParse date with
     | (true, result) -> true
     | _ -> false
 
