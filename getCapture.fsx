@@ -1,3 +1,5 @@
+open System.Text.RegularExpressions
+
 // simple
 let getCapture s p =
   let m = Regex.Match(f, "\[(\w+)\]")
