@@ -21,3 +21,5 @@ let isSuccess result expected =
         Success
     else
         Fail
+
+// print "%d" 3 Success
