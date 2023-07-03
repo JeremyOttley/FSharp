@@ -25,3 +25,5 @@ Directory.GetFiles(dir)
 
 [<EntryPoint>]
 let main argv = 0
+
+//dotnet publish -c release -r win10-x64 -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:PublishTrimmed=true -p:SelfContained=true
