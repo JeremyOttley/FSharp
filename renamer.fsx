@@ -22,3 +22,6 @@ Directory.GetFiles(dir)
   |> Seq.filter (fun x -> isImage x)
   |> Seq.map (fun x -> (x, x.Replace(x, ((ranStr 16) + Path.GetExtension(x)))))
   |> Seq.iter (fun (x,y) -> File.Move(x, y))
+
+[<EntryPoint>]
+let main argv = 0
