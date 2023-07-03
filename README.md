@@ -4,6 +4,7 @@ F# scripts
 ## Simple
 
  dotnet publish -c Release -r win10-x64 -p:PublishTrimmed=true --self-contained
+ dotnet publish -c release -r win10-x64 -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:PublishTrimmed=true -p:SelfContained=true
 
 ## Explicit (with osx target)
 
