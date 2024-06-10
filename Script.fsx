@@ -1,3 +1,6 @@
+#r "nuget: FSharpPlus"
+#r "nuget: FSharp.Data"
+
 open System
 
 [<EntryPoint>]
