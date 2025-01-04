@@ -13,7 +13,7 @@ public class CallMe
 
 You can call them as shown below. Note that methods with multiple arguments have to be called with a tuple, which makes it look like a call in C#.
 
-```
+```csharp
 let callMe = CallMe()
 
 let a = callMe.SingleArgument 1
