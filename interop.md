@@ -2,7 +2,7 @@
 
 Calling a C# method from F# is straightforward. Given the following C# methods:
 
-```
+```csharp
 public class CallMe
 {
     public int SingleArgument(int i) { return i; }
