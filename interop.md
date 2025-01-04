@@ -23,7 +23,7 @@ let b = callMe.MultipleArguments (1, 2)
 
 Calling methods with out-parameters works as well. The return value and the out-parameter(s) are returned as a tuple:
 
-```
+```csharp
 let success, guid = Guid.TryParse "no guid" // success: bool, guid: Guid
 ```
 
