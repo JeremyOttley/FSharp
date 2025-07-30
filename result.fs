@@ -1,3 +1,5 @@
+
+//// BASIC
 // Creating Results
 let successResult = Ok 42
 let errorResult = Error "Something went wrong"
@@ -12,6 +14,7 @@ let handleResult result =
 handleResult successResult // Prints: Success: 42
 handleResult errorResult   // Prints: Error: Something went wrong
 
+//// ADVANCED
 // Chaining operations
 let divide x y =
     if y = 0 then Error "Division by zero"
@@ -28,3 +31,36 @@ let result2 = Error "Invalid input"
 
 let finalResult1 = calculate result1 // Ok 15
 let finalResult2 = calculate result2 // Error "Invalid input"
+
+//// Best Practices
+
+type ValidationError =
+    | EmptyField
+    | InvalidFormat
+    | TooLong
+
+let validateInput (input: string): Result<string, ValidationError> =
+    if String.IsNullOrEmpty input then
+        Error EmptyField
+    elif input.Length > 100 then
+        Error TooLong
+    else
+        Ok input
+
+let processData url =
+    asyncResult {
+        let! response = fetchUrl url
+        let! data = parseResponse response
+        return validateData data
+    }
+
+let handleErrors (result: Result<_, ValidationError>) =
+    match result with
+    | Ok value -> 
+        printfn "Success: %s" value
+    | Error EmptyField ->
+        printfn "Please provide a value"
+    | Error InvalidFormat ->
+        printfn "Invalid format"
+    | Error TooLong ->
+        printfn "Input too long"
